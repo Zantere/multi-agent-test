@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Dungeon Map Explorer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Local dungeon run</p>
+        <h1>AI Dungeon Map Explorer</h1>
+      </div>
+      <div class="toolbar" aria-label="Dungeon controls">
+        <label class="field">
+          <span>Rooms</span>
+          <input id="room-count" type="number" min="8" max="36" value="24" />
+        </label>
+        <button id="generate-btn" type="button">Generate</button>
+        <button id="reset-btn" type="button" class="secondary">Reset Run</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="map-section" aria-labelledby="map-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Seed <span id="seed-value">...</span></p>
+            <h2 id="map-title">Dungeon Map</h2>
+          </div>
+          <p id="map-status" class="status">Preparing the entry stair...</p>
+        </div>
+        <div id="dungeon-grid" class="dungeon-grid" aria-live="polite"></div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="panel" aria-labelledby="stats-title">
+          <h2 id="stats-title">Explorer</h2>
+          <dl class="stats">
+            <div><dt>HP</dt><dd id="hp-value">12</dd></div>
+            <div><dt>Gold</dt><dd id="gold-value">0</dd></div>
+            <div><dt>Keys</dt><dd id="keys-value">0</dd></div>
+            <div><dt>Rooms</dt><dd id="explored-value">0</dd></div>
+          </dl>
+        </section>
+
+        <section class="panel" aria-labelledby="room-title">
+          <p id="room-type" class="eyebrow">Select a room</p>
+          <h2 id="room-title">The map waits.</h2>
+          <p id="room-description">Generate a dungeon, then click a room to inspect it.</p>
+          <div id="encounter-box" class="encounter-box">No encounter resolved yet.</div>
+        </section>
+
+        <section class="panel log-panel" aria-labelledby="log-title">
+          <h2 id="log-title">Run Log</h2>
+          <ol id="run-log"></ol>
+        </section>
+      </aside>
+    </main>
+  </body>
+</html>
